@@ -39,6 +39,11 @@ class Customer
      */
     private $invoices;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Email;
+
     public function __construct()
     {
         $this->invoices = new ArrayCollection();
@@ -111,6 +116,18 @@ class Customer
                 $invoice->setCustomer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->Email;
+    }
+
+    public function setEmail(string $Email): self
+    {
+        $this->Email = $Email;
 
         return $this;
     }
