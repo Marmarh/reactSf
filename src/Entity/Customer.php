@@ -44,6 +44,11 @@ class Customer
      */
     private $Email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="customers")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->invoices = new ArrayCollection();
@@ -128,6 +133,18 @@ class Customer
     public function setEmail(string $Email): self
     {
         $this->Email = $Email;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
